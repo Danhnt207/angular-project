@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
+  </head>
+  <body ng-app="myApp">
+    <div class="content">
+      <div class="left-content">
+        <p>BENZEN MUA THUỐC DỄ DÀNG
+          <br>
+          AN TÂM CHẤT LƯỢNG
+        </p>
+        <div>
+          <img src="/assets/image/login cus/store.png" class="banner"/>
+        </div>
+        <p>Nhận nhiều ưu đãi khi trở thành thành viên tại Benzen Pharmacy <br>
+        <span class="bold">ĐĂNG KÝ NGAY !!!</span></p>
+      </div>
+
+      <div class="right-content">
+        <form class="login_form">
+          <h2 class="header">ĐĂNG KÝ</h2>
+          <div class="container">
+            <div class="container__input">
+                <div class="container__input--item name">
+                    <label for="name">Tên: </label>
+                    <div class="input--content">
+                        <input type="text" name="name" [(ngModel)]="account.Name" #name="ngModel" required/>
+                        <span class="material">*</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="container__input--item phone">
+                      <label for="phonenumber">Số điện thoại: </label>
+                      <div class="input--content">
+                          <input type="text" name="phonenumber" [(ngModel)]="account.phonenumber" #name="ngModel" (blur)="checkPhoneNumber()" required/>
+                        <span class="material">*</span>
+                      </div>
+                  </div>
+                  <div *ngIf="!isPhoneNumberValid" class="error-message">Số điện thoại không hợp lệ!</div>
+                  </div>
+                  <div>
+                    <div class="container__input--item email">
+                      <label for="email">Email: </label>
+                      <div class="input--content">
+                          <input type="text" name="email" [(ngModel)]="account.Mail" #name="ngModel" (blur)="checkMail()">
+                          <span class="material"> </span>
+                      </div>
+                    </div>
+                    <div class="error-message-mail" *ngIf="!isValidEmail">Email không hợp lệ!</div>
+                  </div>
+                  <div class="container__input--item address">
+                    <label for="address">Địa chỉ: </label>
+                    <div class="input--content">
+                        <input type="text" name="address" [(ngModel)]="account.Address" #name="ngModel"/>
+                        <span class="material"> </span>
+                    </div>
+                  </div>
+                  <div class="container__input--item pass">
+                    <label for="psw">Mật khẩu: </label>
+                    <div class="input--content">
+                        <input type="password" name="psw" [(ngModel)]="account.password" #name="ngModel" (blur)="onChecked()" #passwordInput required/>
+                        <span class="material">*</span>
+                    </div>
+                    </div>
+                    <div class="container__input--item repass">
+                        <label for="psw">Nhập lại mật khẩu: </label>
+                        <div class="input--content">
+                            <input type="password" name="psw" [(ngModel)]="confirmPassword" #confirmPasswordInput (blur)="checkPasswordsMatch()" required/>
+                            <span class="material">*</span>
+                        </div>
+                    </div>
+            </div>
+            <div>
+              <button (click)="postAccount()" (click)="postCustomer()" (click)="postDelivery()" class="login_button">HOÀN TẤT</button>
+            </div>
+          </div>
+          <div class="content--bottom">
+            <p>Đã có tài khoản?</p>
+            <a href="app-login">Đăng nhập ngay</a>
+          </div>
+        </form>
+      </div>
+    </div>
+      
+  </body>
+</html>

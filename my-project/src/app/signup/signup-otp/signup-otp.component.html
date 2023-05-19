@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="left-content">
+        <p>BENZEN MUA THUỐC DỄ DÀNG
+          <br>
+          AN TÂM CHẤT LƯỢNG
+        </p>
+        <div>
+          <img src="/assets/image/login cus/store.png" class="banner"/>
+        </div>
+        <p>Nhận nhiều ưu đãi khi trở thành thành viên tại Benzen Pharmacy <br>
+        <span class="bold">ĐĂNG KÝ NGAY !!!</span></p>
+      </div>
+
+      <div class="right-content">
+        <form action="app-home" method="get" class="signup_form">
+          <h2 class="header">ĐĂNG KÝ</h2>
+          <div class="container">
+            <div class="container__input">
+                <div class="container__input--item">
+                    <p class="text--OTP">
+                        Mã xác minh OTP đã gửi đến số điện thoại của bạn. 
+                        <br>
+                        <span style="color: red">Vui lòng kiểm tra tin nhắn điện thoại.</span>
+                    </p>
+                  </div>
+            </div>
+            
+            <div class="container__checkbox">
+                <div class="container__checkbox--otp">
+                  <div>
+                    <label for="uname">Nhập mã xác nhận: </label>
+                    <input type="text" id="otp-input" [(ngModel)]="verificationCode" name="verificationCode" (blur)="checkVerificationCode()">
+                </div>
+                <div *ngIf="!isVerificationCodeValid" class="error-message">Mã xác nhận không hợp lệ</div>
+                </div>
+                
+                <div class="reset-OTP">
+                  <span>Chưa nhận được mã?</span>
+                  <a id="otp-button" (click)="resend()">Gửi lại mã</a>
+                </div>
+            </div>
+            <div>
+              <button type="submit" class="login_button" (click)="onComplete()" >HOÀN TẤT</button>
+            </div>
+          </div>
+          <div class="content--bottom">
+            <a href="app-signup"> << Trở về</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

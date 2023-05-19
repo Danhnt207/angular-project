@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đặt lại mật khẩu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="left-content">
+        <p>BENZEN MUA THUỐC DỄ DÀNG
+          <br>
+          AN TÂM CHẤT LƯỢNG
+        </p>
+        <div>
+          <img src="/assets/image/login cus/store.png" class="banner"/>
+        </div>
+        <p>Nhận nhiều ưu đãi khi trở thành thành viên tại Benzen Pharmacy <br>
+        <span class="bold">ĐĂNG NHẬP NGAY !!!</span></p>
+      </div>
+
+      <div class="right-content">
+        <form action="app-home" method="get" class="login_form">
+          <h2 class="header">ĐẶT LẠI MẬT KHẨU</h2>
+          <div class="container">
+            <div class="container__input">
+                <div class="container__input--item">
+                    <label for="pwd" >Nhập mật khẩu: </label>
+                    <div class="input--content">
+                        <input
+                        type="password" id="pwd" [(ngModel)]="password" (blur)="onChecked()" #passwordInput/>
+                      <span class="material">*</span>
+                      <!-- <div *ngIf="pwd.invalid && pwd.touched">
+                        <small class="text-danger" *ngIf="pwd.errors['required']">Bạn chưa nhập Mật khẩu</small>
+                    </div> -->
+                    </div>
+                  </div>
+                  <div class="container__input--item">
+                    <label for="psw">Nhập lại mật khẩu: </label>
+                    <div class="input--content">
+                        <input
+                        type="password"
+                        [(ngModel)]="confirmPassword" name="confirmPassword" #confirmPasswordInput (blur)="checkPasswordsMatch()"
+                        required
+                      /><span class="material">*</span>
+                    </div>
+                    </div>
+            </div>
+            <div>
+              <button type="submit" class="login_button" onclick="window.location='app-login'">HOÀN TẤT</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

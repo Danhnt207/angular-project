@@ -1,0 +1,37 @@
+[
+  {
+    "context": ["/medicines"],
+    "target": "http://localhost:3000",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  {
+    "context": ["/customers"],
+    "target": "http://localhost:3000",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  {
+    "context": ["/orders"],
+    "target": "http://localhost:3000",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  {
+    "context": ["/orderConfirm"],
+    "target": "http://localhost:3000",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  {
+    "context": ["/customer"],
+    "target": "http://localhost:3000",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+]

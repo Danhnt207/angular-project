@@ -1,0 +1,178 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<div class="container" >
+    <div class="section">
+        <ol>
+            <li>Trang chủ</li>
+            <li>{{ medicine.Category }}</li>
+            <li>{{ medicine.SubCategory }}</li>
+            <li>{{ medicine.Name }}</li>
+        </ol>
+    </div>
+    <div class="content">
+        <div class="content__item">
+            <div class="item__img">
+              <div class="item__img--main">
+                  <img src="{{ medicine.Image }}" >
+              </div>
+            </div>
+            <div class="item__infor">
+                <h2 class="item__infor--title">{{ medicine.Name }}</h2>
+                <h2 class="item__infor--price">{{ medicine.Price }}</h2>
+                <ul>
+                    <li><span class="bold">Thành phần:</span> {{ medicine.Ingredients }}</li>
+                    <li><span class="bold">Công dụng:</span> {{ medicine.Uses }}</li>
+                    <li><span class="bold">Thương hiệu:</span> {{ medicine.Brand }}</li>
+                    <li><span class="bold">Nơi sản xuất:</span> {{ medicine.Manufacturer }}</li>
+                </ul>
+                <div class="amount">
+                    <p>
+                        Chọn số lượng:
+                    </p>
+                    <div class="item--amount">
+                        <button (click)="decrease()"><span class="material-symbols-outlined">remove</span></button>
+                        <input type="text" [(ngModel)]="quantity">
+                        <button (click)="increase()"><span class="material-symbols-outlined">add</span></button>
+                    </div>
+                </div>
+                <div class="item--button">
+                    <button class="buy--button" (click)="addToCartToBuy(medicine)">CHỌN MUA</button>
+                    <button class="add--cart" (click)="addToCart(medicine)">THÊM VÀO GIỎ HÀNG</button>
+                </div>
+            </div>
+        </div>
+        <div class="content__description">
+            <h2>{{ medicine.Name }}</h2>
+            <div class="img"><img src="{{ medicine.Image }}"></div>
+            <div>
+                <h3>Thành phần</h3>
+                <p>{{ medicine.Ingredients }}</p>
+            </div>
+            <div>
+                <h3>Thương hiệu:</h3>
+                <p>{{ medicine.Brand }}</p>
+            </div>
+            <div>
+                <h3>Nhà sản xuất:</h3>
+                <p>{{ medicine.Manufacturer }}</p>
+            </div>
+            <div [ngClass]="{'expanded': expandDiv==true}"  *ngIf="expandDiv">
+                <div>
+                    <h3>Công dụng</h3>
+                    <p>{{ medicine.Uses }}</p>
+                </div>
+               <div>
+                <h3>Hướng dẫn sử dụng:</h3>
+                <p>{{ medicine.Directions }}</p>
+               </div>
+                <div>
+                    <h3>Bảo quản:</h3>
+                    <p>{{ medicine.Store }}</p>
+                </div>
+                <div>
+                    <h3>Lưu ý:</h3>
+                    <p>{{ medicine.Warnings }}</p>
+                </div>
+                <div class="more--button" (click)="HiddenMore()">
+                    Thu hẹp
+                    <span class="material-symbols-outlined">expand_less</span>
+                </div>
+              </div>
+
+              <div  *ngIf="!expandDiv" (click)="showMore()" class="more--button">
+                Xem thêm
+                <span class="material-symbols-outlined" >expand_more</span>
+              </div>
+
+        </div>
+        </div>
+        <div class="more--item">
+            <h3>SẢN PHẨM LIÊN QUAN</h3>
+            <div class="more_products--product">
+              <div *ngFor="let same_medicine of medicines.slice(0,5)">
+                <a (click)="viewMedicineDetail(same_medicine)" class="more_products--product-detail" href="" *ngIf="same_medicine.SubCategory === medicine.SubCategory">
+                    <img src="{{ same_medicine.Image }}" alt="">
+                    <p class="more_products--product-detail-name" >{{ same_medicine.Name }}</p>
+                    <p class="more_products--product-detail-price" href="">{{ same_medicine.Price }}</p>
+                    <div class="more_products--product-detail-button">
+                        <input type="button" value="CHỌN MUA" >
+                    </div>
+                </a>
+              </div>
+            </div>
+        </div>
+        <div class="comment">
+            <p>BÌNH LUẬN</p>
+            <div class="comment__box--input">
+                <div class="commit__infor">
+                    <div class="commit--gender">
+                        <label class="gender">
+                         <input type="radio" checked="checked" name="radio" >Anh
+                        </label>
+                        <label class="gender">
+                          <input type="radio" checked="checked" name="radio">Chị
+                        </label>
+                    </div>
+                    <div class="commit--name">
+                        <label for="name">
+                          <input type="text" id="name" value="Họ và tên">
+                          <span class="material">*</span>
+                        </label>
+                        <label for="phone">
+                          <input type="text" id="phone" value="Số điện thoại">
+                        </label>
+                    </div>
+                </div>
+                <textarea name="comment" id="comment" placeholder="Nhập nội dung..."></textarea>
+                <div class="sendComment">
+                    <button id="sendComment">Gửi bình luận</button>
+                </div>
+            </div>
+            <div class="comment__cus">
+                <div class="comment__box--cus" style="width: 100%">
+                    <div class="comment__cus--content">
+                        <h3>Thanh Bình</h3>
+                        <p>Cho em hỏi mình có ship về Vũng Tàu không ạ? Em muốn đặt hàng ạ
+                        <p>
+                    </div>
+                    <div class="comment__cus--reply">
+                        <h3>Nhà thuốc Benzen</h3>
+                        <p>Chào chị, Benzen có giao đến Vũng Tàu nhé.
+                        <p>
+                    </div>
+                </div>
+            </div>
+            <div class="comment__box--cus">
+                <div class="comment__cus--content">
+                    <h3>Bá Tùng</h3>
+                    <p>Loại này có chống chỉ định dùng cho đối tượng nào không ạ?
+                    <p>
+                </div>
+                <div class="comment__cus--reply">
+                    <h3>Nhà thuốc Benzen</h3>
+                    <p>Benzen chào anh. Loại này bác sĩ khuyên dùng thích hợp nhất cho người trưởng thành từ 20 tuổi trở lên anh nhé! Nếu dưới 20 tuổi anh có thể liên hệ với Benzen để được dược sĩ tư vấn cho mình nhé.
+                    <p>
+                </div>
+            </div>
+            <div class="comment__button--more">
+                <button><span class="material-symbols-outlined">chevron_left</span> Trước</button>
+                <button >Sau <span class="material-symbols-outlined">chevron_right</span></button>
+            </div>
+        </div>
+    </div>
+
+
+<!-- popup -->
+<div class="popup" *ngIf="isLogin">
+  <div class="popup-container">
+    <h2 class="popup-title">Đặt hàng</h2>
+    <hr>
+    <p class="popup-message">Bạn vui lòng <span class="main-color">đăng nhập</span> để tiếp tục đặt hàng nhé!</p>
+    <div class="popup-buttons">
+      <button class="popup-button" (click)="onLogin()">Đăng nhập</button>
+      <button class="popup-button" (click)="onBack()">Trở lại</button>
+    </div>
+  </div>
+</div>
